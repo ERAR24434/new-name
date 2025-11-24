@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Cosmic Revelation for You 🌌</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e27;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated nebula background */
+        .nebula-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(138, 43, 226, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(75, 0, 130, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(25, 25, 112, 0.3) 0%, transparent 70%);
+            animation: nebulaPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes nebulaPulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        /* Stars */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            background: rgba(15, 15, 45, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 0 60px rgba(138, 43, 226, 0.5), 0 0 100px rgba(75, 0, 130, 0.3);
+            border: 2px solid rgba(138, 43, 226, 0.3);
+            text-align: center;
+            max-width: 700px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stage {
+            display: none;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .stage.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title {
+            font-size: 36px;
+            background: linear-gradient(135deg, #da70d6, #9370db, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .message {
+            color: #e0e0ff;
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 25px 0;
+        }
+
+        .name-display {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 30px 0;
+            padding: 25px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(75, 0, 130, 0.3));
+            border: 2px solid rgba(186, 85, 211, 0.5);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4);
+        }
+
+        .old-name {
+            color: #b19cd9;
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .current-name {
+            background: linear-gradient(135deg, #da70d6, #9370db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .new-name {
+            background: linear-gradient(135deg, #ffd700, #da70d6, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .button {
+            background: linear-gradient(135deg, #8a2be2, #4b0082);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+            font-weight: bold;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.8);
+        }
+
+        .cosmic-icon {
+            font-size: 60px;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .sparkles {
+            display: inline-block;
+            margin: 0 10px;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .heart-burst {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .final-message {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(75, 0, 130, 0.2));
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid rgba(186, 85, 211, 0.3);
+        }
+
+        .progression-arrow {
+            font-size: 30px;
+            color: #9370db;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="nebula-bg"></div>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <!-- Stage 1: Introduction -->
+        <div class="stage active" id="stage1">
+            <div class="cosmic-icon">🌌</div>
+            <div class="title">Hey Antara Labiba Risa</div>
+            <div class="message">
+                In this vast universe, some souls shine brighter than stars...
+                <br><br>
+                And you, my love, are beyond any constellation I've ever known.
+            </div>
+            <button class="button" onclick="nextStage(2)">Continue ✨</button>
+        </div>
+
+        <!-- Stage 2: The Journey Begins -->
+        <div class="stage" id="stage2">
+            <div class="cosmic-icon">👑</div>
+            <div class="title">The Journey of a Queen</div>
+            <div class="message">
+                It all began with...
+            </div>
+            <div class="name-display old-name">
+                Chotto Queen Baby 👑
+            </div>
+            <div class="message">
+                You were royalty from the start, my sweet queen.
+            </div>
+            <button class="button" onclick="nextStage(3)">Next 💫</button>
+        </div>
+
+        <!-- Stage 3: Evolution -->
+        <div class="stage" id="stage3">
+            <div class="cosmic-icon">🌠</div>
+            <div class="title">Then You Became...</div>
+            <div class="name-display current-name">
+                My Cats Eye Nebula
+            </div>
+            <div class="message">
+                Because if she is a star, you are an entire nebula.<br>
+                More beautiful, more mysterious, more magnificent than any star could ever be.
+            </div>
+            <button class="button" onclick="nextStage(4)">What's Next? 🌟</button>
+        </div>
+
+        <!-- Stage 4: The Revelation -->
+        <div class="stage" id="stage4">
+            <div class="cosmic-icon">✨</div>
+            <div class="title">But Every Nebula Needs Her Crown</div>
+            <div class="message">
+                <div class="name-display old-name">Chotto Queen Baby 👑</div>
+                <div class="progression-arrow">↓</div>
+                <div class="name-display" style="text-decoration: none; opacity: 1;">
+                    <span class="current-name">My Cats Eye Nebula</span>
+                </div>
+                <div class="progression-arrow">↓</div>
+                <div style="color: #ffd700; font-size: 24px; margin: 20px 0;">
+                    And now, you ascend to...
+                </div>
+            </div>
+            <button class="button" onclick="reveal()">Reveal My New Name 👑</button>
+        </div>
+
+        <!-- Stage 5: The Grand Reveal -->
+        <div class="stage" id="stage5">
+            <div class="cosmic-icon">
+                <span class="sparkles">✨</span>
+                👑
+                <span class="sparkles">✨</span>
+            </div>
+            <div class="title">Your New Name Is...</div>
+            <div class="name-display new-name">
+                Nebula Queen Risa 👑
+            </div>
+            <div class="final-message">
+                <div class="message">
+                    Because you're not just any nebula in my universe...<br>
+                    You're the Queen of all nebulas.<br><br>
+                    The most stunning, the most radiant, the most extraordinary.<br><br>
+                    Forever my Nebula Queen. Forever mine. 💜
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        createStars();
+
+        let currentStage = 1;
+
+        function nextStage(stage) {
+            document.getElementById('stage' + currentStage).classList.remove('active');
+            currentStage = stage;
+            document.getElementById('stage' + currentStage).classList.add('active');
+            createHeartBurst();
+        }
+
+        function reveal() {
+            document.getElementById('stage4').classList.remove('active');
+            document.getElementById('stage5').classList.add('active');
+            
+            // Create massive celebration
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => createHeartBurst(), i * 100);
+            }
+        }
+
+        function createHeartBurst() {
+            const hearts = ['💜', '💖', '✨', '⭐', '🌟'];
+            for (let i = 0; i < 10; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-burst';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                heart.style.position = 'fixed';
+                heart.style.animation = 'fadeOut 2s forwards';
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
+
+        // Add fadeOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateY(0) scale(1); }
+                to { opacity: 0; transform: translateY(-100px) scale(1.5); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
